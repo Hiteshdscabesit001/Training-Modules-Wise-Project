@@ -1,0 +1,40 @@
+services:
+  accounts:
+    image: "hiteshchaudhary/accounts:s1"
+    container_name: accounts-ms
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - chaudharybank
+
+  loans:
+    image: "hiteshchaudhary/loans:s2"
+    container_name: loans-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - chaudharybank
+
+  cards:
+    image: "hiteshchaudhary/cards:s3"
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - chaudharybank
+
+  networks:
+    chaudharybank:
+      driver: "bridge"
